@@ -1,8 +1,11 @@
+package affichage;
+
+import communication.CommBase;
 /******************************************************
 Cours:  LOG121
 Projet: Squelette du laboratoire #1
 Nom du fichier: ApplicationFormes.java
-Date créé: 2013-05-03
+Date crÃ©Ã©: 2013-05-03
  *******************************************************
 Historique des modifications
  *******************************************************
@@ -26,9 +29,7 @@ public class ApplicationFormes {
 	 */
 	public static void main(String[] args) {
 
-		ApplicationFormes application = new ApplicationFormes();
-
-	}
+		ApplicationFormes application = new ApplicationFormes();	}
 
 	/**
 	 * Constructeur
@@ -38,5 +39,5 @@ public class ApplicationFormes {
 		FenetrePrincipale fenetre = new FenetrePrincipale(comm);
 		comm.setPropertyChangeListener(fenetre);
 	}
-
 }
+

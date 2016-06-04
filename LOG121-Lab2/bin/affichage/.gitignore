@@ -1,7 +1,4 @@
-/.DS_Store
 /ApplicationFormes.class
-/CommBase$1.class
-/CommBase.class
 /FenetreFormes.class
 /FenetrePrincipale$1.class
 /FenetrePrincipale.class
@@ -13,7 +10,3 @@
 /MenuFenetre$5.class
 /MenuFenetre$6.class
 /MenuFenetre.class
-/app_en.properties
-/app_fr.properties
-/forme/
-/prefs.properties

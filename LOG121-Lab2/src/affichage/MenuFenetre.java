@@ -1,3 +1,4 @@
+package affichage;
 /******************************************************
 Cours:  LOG121
 Projet: Squelette du laboratoire #1
@@ -20,6 +21,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+
+import communication.CommBase;
 
 /**
  * Cree le menu de la fenetre de l'application

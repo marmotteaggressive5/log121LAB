@@ -1,3 +1,4 @@
+package affichage;
 /******************************************************
 Cours:  LOG121
 Projet: Squelette du laboratoire #1
@@ -18,6 +19,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.JFrame;
+
+import communication.CommBase;
 
 import forme.ConteneurFormes;
 

@@ -1,3 +1,4 @@
+package affichage;
 /******************************************************
 Cours:  LOG121
 Projet: Squelette du laboratoire #1
@@ -8,11 +9,15 @@ Historique des modifications
  *******************************************************
  *@author Patrice Boucher
 2013-05-03 Version initiale
-2016-05-21 Dernière Version
+2016-05-21 Derniï¿½re Version
  *******************************************************/
 
+import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
+import java.awt.geom.Rectangle2D;
 
 import javax.swing.JComponent;
 
@@ -38,7 +43,7 @@ public class FenetreFormes extends JComponent {
 	 * Constructeur
 	 */
 	public FenetreFormes() {
-		
+
 	}
 
 	public void setConteneur(final ConteneurFormes aConteneurFormes) {
@@ -51,13 +56,15 @@ public class FenetreFormes extends JComponent {
 	 */
 	@Override
 	public void paintComponent(final Graphics graphic) {
+		Graphics2D graph2D = (Graphics2D) graphic;
+		
 		if (this.formeArray != null) {
 
 			for (int i = 0; i < formeArray.length; i++) {
 
 				if (formeArray[i] != null) {
 
-					formeArray[i].dessinerForme(graphic);
+					formeArray[i].dessinerForme(graph2D).dessinerContour(graph2D);
 
 				} else {
 					break;
@@ -68,7 +75,7 @@ public class FenetreFormes extends JComponent {
 
 	/*
 	 * Le Layout qui utilise (contient) FenetreFormes doit reserver l'espace
-	 * necessaire a  son affichage
+	 * necessaire aï¿½ son affichage
 	 */
 	@Override
 	public Dimension getPreferredSize() {
