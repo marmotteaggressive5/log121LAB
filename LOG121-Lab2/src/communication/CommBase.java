@@ -30,21 +30,19 @@ import forme.CreateurFormes;
  */
 public class CommBase {
 
-	private final int INPUT_ARRAY_SIZE = 2;
-	private final int DELAI = 1000;
-	private final String LOCALHOST = "localhost";
+	private final int DELAI = 100;
 	private final String GET = "GET";
 	private final String END = "END";
 	private final String COMMAND_LINE = "commande> ";
+	private final String HOSTNAME = "localhost";
+	private final int PORTNAME = 10000;
 	private SwingWorker threadComm = null;
 	private PropertyChangeListener listener = null;
 	private boolean isActif = false;
 	private boolean isConnected = false;
-	private String hostName;
-	private int portName;
+	private PrintWriter currentPrinter;
 	private CreateurFormes createurForme = new CreateurFormes();
 	private ConteneurFormes conteneurFormes = new ConteneurFormes();
-	private PrintWriter currentPrinter;
 	private Socket currentSocket;
 
 	/**
@@ -70,51 +68,18 @@ public class CommBase {
 	 * Demarre la communication
 	 */
 	public void start() {
-
-		if (isConnected) {
-			creerCommunication();
-		} else {
-			JOptionPane.showMessageDialog(new JFrame(),
-					"Veuillez vous connecter au serveur");
-		}
-
+		isConnected = true;
+		creerCommunication();
 	}
 
 	/**
-	 * Se connecte au serveur
+	 * Arrete la communication
 	 */
-	public void connectToServer() {
-
-		String input = JOptionPane.showInputDialog("Quel est le nom de l'hote"
-				+ " et du port du serveur? (Ex: localhost:10000)","localhost:10000");
-
-		if (input != null && input != "") {
-			String[] inputArray = input.split(":");
-
-			if (inputArray.length == INPUT_ARRAY_SIZE) {
-				hostName = inputArray[0];
-
-				if (hostName.equals(LOCALHOST)) {
-					this.portName = Integer.parseInt(inputArray[1]);
-					isConnected = true;
-					start();
-				} else {
-					JOptionPane
-							.showMessageDialog(new JFrame(),
-									"Le nom de l'hote que vous avez entre est invalide");
-				}
-
-			} else {
-				JOptionPane.showMessageDialog(new JFrame(),
-						"Le champ que vous avez entre est invalide");
-			}
-		} else {
-			JOptionPane.showMessageDialog(new JFrame(),
-					"Le champ que vous avez entre est vide");
-		}
-
+	public void stop() {
+		if (threadComm != null)
+			threadComm.cancel(true);
 	}
-
+	
 	/**
 	 * Se deconnecte du serveur
 	 */
@@ -126,23 +91,13 @@ public class CommBase {
 			isConnected = false;
 			isActif = false;
 			currentSocket = null;
-			JOptionPane.showMessageDialog(new JFrame(),
-					"Vous avez ete deconnecte du serveur " + hostName
-							+ " sur le port " + portName);
+//			JOptionPane.showMessageDialog(new JFrame(),
+//					"Vous avez ete deconnecte du serveur " + HOSTNAME
+//							+ " sur le port " + PORTNAME);
 			stop();
 		}
 	}
-
-	/**
-	 * Arrete la communication
-	 */
-	public void stop() {
-
-		isActif = false;
-		if (threadComm != null)
-			threadComm.cancel(true);
-
-	}
+	
 
 	/**
 	 * Creer le necessaire pour la communication avec le serveur
@@ -152,14 +107,9 @@ public class CommBase {
 		threadComm = new SwingWorker() {
 			@Override
 			protected Object doInBackground() throws Exception {
-				System.out.println("Le fils d'execution parallele est lance");
-
-				if (currentSocket != null) {
-					System.out.println(currentSocket.isConnected());
-
-				} else {
+				if (currentSocket == null) {
 					@SuppressWarnings("resource")
-					Socket aSocket = new Socket(hostName, portName);
+					Socket aSocket = new Socket(HOSTNAME, PORTNAME);
 					currentSocket = aSocket;
 				}
 
@@ -179,26 +129,34 @@ public class CommBase {
 				/* FIN DU CODE EMPRUNTE */
 
 				currentPrinter = printer;
-
+				
 				String serverString;
 
+				conteneurFormes.clearForme();
+				
 				while (true) {
 					Thread.sleep(DELAI);
+					
+					for (int i = 0; i < conteneurFormes.getFormeArray().length; i++) {
+						printer.println(GET);
 
-					printer.println(GET);
-
-					serverString = reader.readLine();
-
-					if (serverString.equals(COMMAND_LINE)) {
 						serverString = reader.readLine();
+
+						if (serverString.equals(COMMAND_LINE)) {
+							serverString = reader.readLine();
+						}
+
+						System.out.println("\nForme " + (i + 1) + ":\t" + serverString); // affiche la
+						// chaine de charactere recu par le serveur
+
+						conteneurFormes.addForme(createurForme
+								.creerForme(serverString)); // ajoute la forme dans
+															// le conteneur
 					}
-
-					System.out.println("\n" + serverString); // affiche la
-					// chaine de charactere recu par le serveur
-
-					conteneurFormes.addForme(createurForme
-							.creerForme(serverString)); // ajoute la forme dans
-														// le conteneur
+					
+					
+					disconnectFromServer();
+					
 
 					// La methode suivante alerte l'observateur
 					if (listener != null)
@@ -220,10 +178,9 @@ public class CommBase {
 				// manuellement--------------------------
 				if (isActif) {
 					JOptionPane.showMessageDialog(new JFrame(), "Le serveur "
-							+ hostName + " ne repond pas sur le port "
-							+ portName);
-					disconnectFromServer();
-					firePropertyChange("SERVEUR-INACTIF", null, conteneurFormes);
+							+ HOSTNAME + " ne repond pas sur le port "
+							+ PORTNAME);
+					stop();
 				}
 
 				// -----------------Fin du code ajoute
@@ -242,7 +199,7 @@ public class CommBase {
 															// invoquera la
 															// methode
 															// "firePropertyChanger"
-		threadComm.execute(); // Lance le fil d'execution parallèle.
+		threadComm.execute(); // Lance le fil d'execution parallele.
 		isActif = true;
 	}
 

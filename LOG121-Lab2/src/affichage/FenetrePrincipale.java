@@ -91,8 +91,6 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener 
 																				// afficher
 			}
 
-		} else if (arg0.getPropertyName().equals("SERVEUR-INACTIF")) {
-			menu.rafraichirMenus();
 		}
 	}
 }

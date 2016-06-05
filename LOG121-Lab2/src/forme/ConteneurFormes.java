@@ -43,6 +43,7 @@ public class ConteneurFormes {
 		}
 		updateFormeArray(aForme);
 	}
+	
 
 	/**
 	 * Met a jour le tableau de forme afin qu'il contienne au maximum 10 formes
