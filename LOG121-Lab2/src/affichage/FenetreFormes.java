@@ -45,7 +45,7 @@ public class FenetreFormes extends JComponent {
 	public void setConteneur(final CustomLinkedList CustomLinkedList) {
 		this.formeArrayList = CustomLinkedList;
 		//System.out.println("ToString = " + CustomLinkedList.toString());
-		TriStrategy triAlgo = new TriAireDecroissant();
+		TriStrategy triAlgo = new TriHauteurDecroissante();
 		triAlgo.tri(this.formeArrayList);
 		this.repaint();
 	}
