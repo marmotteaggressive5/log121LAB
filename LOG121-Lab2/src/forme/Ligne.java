@@ -23,47 +23,33 @@ public class Ligne extends FormeLineaire {
 	}
 
 	@Override
-	public Forme dessinerForme(Graphics graph) {
+	public Forme dessinerForme(Graphics graph,int index) {
 		graph.setColor(getColor());
-		graph.drawLine(getX1(), getY1(), getX2(), getY2());
+		int cornerPostion = DISTANCE_ENTRE_FORME*index;
+		graph.drawLine(cornerPostion, cornerPostion, cornerPostion+getWidth(), cornerPostion+getHeight());
 		return this;
 	}
 
 	@Override
 	public int getHeight() {
-		int height = getY2() - getY1();
-		if (height >=0) {
-			return height;
-		} else {
-			return -height;
-		}
+		return Math.abs(getY2() - getY1());
 	}
 
 	@Override
 	public int getWidth() {
-		int width = getX2() - getX1();
-		if (width >=0) {
-			return width;
-		} else {
-			return -width;
-		}
+		return Math.abs(getX2() - getX1());
 	}
 	
 	@Override
-	public Rectangle2D getContour(){
-		int width = getX2() - getX1();
-		int height = getY2()-getY1();
-		int x1 = getX1();
-		int y1 = getY1();
+	public Rectangle2D getContour(int index){
+		int x1 = DISTANCE_ENTRE_FORME*index;
+		int y1 = DISTANCE_ENTRE_FORME*index;
 		
-		if (width < 0) {
-			x1 = getX2();
-		}
-		
-		if (height < 0) {
-			y1 = getY2();
-		}
-		
-		return new Rectangle2D.Float( x1, y1, getWidth(), getHeight());
+		return new Rectangle2D.Float(x1,y1, getWidth(), getHeight());
+	}
+
+	@Override
+	public int getAire() {
+		return (int) Math.hypot(getHeight(), getWidth());
 	}
 }

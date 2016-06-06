@@ -34,8 +34,6 @@ public class MenuFenetre extends JMenuBar {
 	private static final long serialVersionUID = 1536336192561843187L;
 	private static final int MENU_FICHIER_OBTENIR_FORME_TOUCHE_MASK = ActionEvent.CTRL_MASK;
 	private static final char MENU_FICHIER_OBTENIR_FORME_TOUCHE_RACC = KeyEvent.VK_O;
-	private static final int MENU_FICHIER_QUITTER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
-	private static final char MENU_FICHIER_QUITTER_TOUCHE_RACC = KeyEvent.VK_Q;
 	private static final String MENU_ORDRE_TITRE = "app.frame.menus.order.title",
 			MENU_ORDRE_NUMERO_SEQUENCE_CROISSANT = "app.frame.menus.order.sequencenumber.ascending",
 			MENU_ORDRE_NUMERO_SEQUENCE_DECROISSANT = "app.frame.menus.order.sequencenumber.descending",
@@ -53,13 +51,12 @@ public class MenuFenetre extends JMenuBar {
 			
 			MENU_FICHIER_TITRE = "app.frame.menus.file.title",
 			MENU_FICHIER_OBTENIR_FORMES = "app.frame.menus.file.getshapes",
-			MENU_FICHIER_QUITTER = "app.frame.menus.file.exit",
 			MENU_AIDE_TITRE = "app.frame.menus.help.title",
 			MENU_AIDE_PROPOS = "app.frame.menus.help.about";
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
 	
-	private JMenuItem obternirFormesMenuItem, quitterMenuItem;
-	private static final int DELAI_QUITTER_MSEC = 200;
+	private JMenuItem obternirFormesMenuItem;
+
 
 	private CommBase comm; // Pour activer/désactiver la communication avec le
 							// serveur
@@ -119,8 +116,7 @@ public class MenuFenetre extends JMenuBar {
 	protected void addMenuFichier() {
 		JMenu menu = creerMenu(MENU_FICHIER_TITRE,
 				new String[] { 
-				MENU_FICHIER_OBTENIR_FORMES,
-				MENU_FICHIER_QUITTER });
+				MENU_FICHIER_OBTENIR_FORMES});
 		
 		
 		obternirFormesMenuItem = menu.getItem(0);
@@ -133,23 +129,6 @@ public class MenuFenetre extends JMenuBar {
 				MENU_FICHIER_OBTENIR_FORME_TOUCHE_RACC,
 				MENU_FICHIER_OBTENIR_FORME_TOUCHE_MASK));
 		
-		
-		quitterMenuItem = menu.getItem(1);
-		
-		quitterMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				comm.disconnectFromServer();
-				try {
-					Thread.sleep(DELAI_QUITTER_MSEC);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				System.exit(0);
-			}
-		});
-		quitterMenuItem.setAccelerator(
-				KeyStroke.getKeyStroke(MENU_FICHIER_QUITTER_TOUCHE_RACC,
-						MENU_FICHIER_QUITTER_TOUCHE_MASK));
 		add(menu);
 	}
 

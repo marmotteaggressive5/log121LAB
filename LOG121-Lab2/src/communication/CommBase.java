@@ -17,13 +17,11 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
-
-import forme.ConteneurFormes;
 import forme.CreateurFormes;
+import forme.CustomLinkedList;
 
 /**
  * Base d'une communication via un fil d'exécution parallele.
@@ -36,14 +34,16 @@ public class CommBase {
 	private final String COMMAND_LINE = "commande> ";
 	private final String HOSTNAME = "localhost";
 	private final int PORTNAME = 10000;
+	@SuppressWarnings("rawtypes")
 	private SwingWorker threadComm = null;
 	private PropertyChangeListener listener = null;
 	private boolean isActif = false;
 	private boolean isConnected = false;
 	private PrintWriter currentPrinter;
 	private CreateurFormes createurForme = new CreateurFormes();
-	private ConteneurFormes conteneurFormes = new ConteneurFormes();
+	private CustomLinkedList formeArray = new CustomLinkedList();
 	private Socket currentSocket;
+	private final int NUMBER_OF_FORME = 10;
 
 	/**
 	 * Constructeur
@@ -102,13 +102,13 @@ public class CommBase {
 	/**
 	 * Creer le necessaire pour la communication avec le serveur
 	 */
+	@SuppressWarnings("rawtypes")
 	protected void creerCommunication() {
 		// Cree un fil d'execusion parallele au fil courant,
 		threadComm = new SwingWorker() {
 			@Override
 			protected Object doInBackground() throws Exception {
 				if (currentSocket == null) {
-					@SuppressWarnings("resource")
 					Socket aSocket = new Socket(HOSTNAME, PORTNAME);
 					currentSocket = aSocket;
 				}
@@ -132,12 +132,12 @@ public class CommBase {
 				
 				String serverString;
 
-				conteneurFormes.clearForme();
+				formeArray.clear();
 				
 				while (true) {
 					Thread.sleep(DELAI);
 					
-					for (int i = 0; i < conteneurFormes.getFormeArray().length; i++) {
+					for (int i = 0; i < NUMBER_OF_FORME; i++) {
 						printer.println(GET);
 
 						serverString = reader.readLine();
@@ -149,7 +149,7 @@ public class CommBase {
 						System.out.println("\nForme " + (i + 1) + ":\t" + serverString); // affiche la
 						// chaine de charactere recu par le serveur
 
-						conteneurFormes.addForme(createurForme
+						formeArray.add(createurForme
 								.creerForme(serverString)); // ajoute la forme dans
 															// le conteneur
 					}
@@ -161,7 +161,7 @@ public class CommBase {
 					// La methode suivante alerte l'observateur
 					if (listener != null)
 						firePropertyChange("MISE-A-JOUR-FORMES", null,
-								conteneurFormes);
+								formeArray);
 				}
 			}
 

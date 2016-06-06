@@ -84,9 +84,9 @@ public class FormeCirculaire extends Forme {
 	
 
 	@Override
-	public Forme dessinerForme(Graphics graph) {
+	public Forme dessinerForme(Graphics graph,int index) {
 		graph.setColor(getColor());
-		graph.fillOval(getCentreX() - rayonH, getCentreY() - rayonV, getWidth(), getHeight());
+		graph.fillOval(DISTANCE_ENTRE_FORME*index, DISTANCE_ENTRE_FORME*index, getWidth(), getHeight());
 		return this;
 	}
 
@@ -108,6 +108,11 @@ public class FormeCirculaire extends Forme {
 	
 	public int getY1(){
 		return getCentreY()-getRayonV();
+	}
+
+	@Override
+	public int getAire() {
+		return (int) (Math.PI * getRayonH() * getRayonV());
 	}
 	
 }

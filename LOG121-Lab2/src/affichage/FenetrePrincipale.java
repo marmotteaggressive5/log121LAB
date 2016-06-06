@@ -17,12 +17,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
 import javax.swing.JFrame;
-
 import communication.CommBase;
-
-import forme.ConteneurFormes;
+import forme.CustomLinkedList;
 
 /**
  * Cette classe represente la fenêtre principale de l'application
@@ -80,10 +77,9 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener 
 
 		if (arg0.getPropertyName().equals("MISE-A-JOUR-FORMES")) {
 
-			if (arg0.getNewValue() instanceof ConteneurFormes) {
+			if (arg0.getNewValue() instanceof CustomLinkedList) {
 
-				fenetreFormes
-						.setConteneur((ConteneurFormes) arg0.getNewValue()); // ajoute
+				fenetreFormes.setConteneur((CustomLinkedList) arg0.getNewValue()); // ajoute
 																				// le
 																				// nouveau
 																				// tableau

@@ -28,6 +28,7 @@ public abstract class Forme {
 	private int nSeq;
 	private String type;
 	private Color color;
+	protected final int DISTANCE_ENTRE_FORME = 40;
 
 	/**
 	 * Constructeur
@@ -44,6 +45,8 @@ public abstract class Forme {
 		this.type = aType;
 		this.color = aColor;
 	}
+	
+	public abstract int getAire();
 
 	/**
 	 * 
@@ -99,7 +102,7 @@ public abstract class Forme {
 	 * @param graph
 	 *            qui permet de dessiner les formes
 	 */
-	public abstract Forme dessinerForme(Graphics graph);
+	public abstract Forme dessinerForme(Graphics graph,int index);
 
 	/**
 	 * Dessine le contour de la forme en pointille
@@ -107,7 +110,7 @@ public abstract class Forme {
 	 * @param graph
 	 *            qui permet de dessiner les formes
 	 */
-	public void dessinerContour(Graphics2D graph) {
+	public void dessinerContour(Graphics2D graph,int index) {
 		graph.setColor(Color.GRAY);
 
 		/*
@@ -118,7 +121,7 @@ public abstract class Forme {
 		 * ce code permet de dessiner le contour de la forme en pointille
 		 */
 
-		Rectangle2D contour = getContour();
+		Rectangle2D contour = getContour(index);
 		float[] dash = { 5, 5 };
 		Stroke dashedStroke = new BasicStroke(1, BasicStroke.CAP_BUTT,
 				BasicStroke.JOIN_MITER, 3, dash, 0);
@@ -130,7 +133,7 @@ public abstract class Forme {
 	/**
 	 * Permet d'obtenir le contour de la forme
 	 */
-	public Rectangle2D getContour() {
-		return new Rectangle2D.Float(getX1(), getY1(), getWidth(), getHeight());
+	public Rectangle2D getContour(int index) {
+		return new Rectangle2D.Float(DISTANCE_ENTRE_FORME*index, DISTANCE_ENTRE_FORME*index, getWidth(), getHeight());
 	}
 }

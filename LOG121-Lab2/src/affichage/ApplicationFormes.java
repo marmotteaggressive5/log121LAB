@@ -28,8 +28,8 @@ public class ApplicationFormes {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
-		ApplicationFormes application = new ApplicationFormes();	}
+		new ApplicationFormes();
+	}
 
 	/**
 	 * Constructeur

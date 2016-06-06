@@ -27,7 +27,7 @@ public class Rectangle extends FormeLineaire {
 	 * @return int la largeur de la forme
 	 */
 	public int getWidth() {
-		return getX2() - getX1();
+		return Math.abs(getX2() - getX1());
 	}
 
 	/**
@@ -36,13 +36,18 @@ public class Rectangle extends FormeLineaire {
 	 * @return int la hauteur de la forme
 	 */
 	public int getHeight() {
-		return getY2() - getY1();
+		return Math.abs(getY2() - getY1());
 	}
 	
 	@Override
-	public Forme dessinerForme(Graphics graph) {
+	public Forme dessinerForme(Graphics graph,int index) {
 		graph.setColor(getColor());
-		graph.fillRect(getX1(), getY1(), getWidth(), getHeight());
+		graph.fillRect(DISTANCE_ENTRE_FORME*index, DISTANCE_ENTRE_FORME*index, getWidth(), getHeight());
 		return this;
+	}
+
+	@Override
+	public int getAire() {
+		return getWidth()*getHeight();
 	}
 }
