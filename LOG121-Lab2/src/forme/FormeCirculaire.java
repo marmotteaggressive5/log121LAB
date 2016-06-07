@@ -125,4 +125,11 @@ public class FormeCirculaire extends Forme {
 		}
 		return result;
 	}
+
+	@Override
+	public Forme dessinerFormeOriginal(Graphics graph) {
+		graph.setColor(getColor());
+		graph.fillOval(getCentreX() - rayonH, getCentreY() - rayonV, getWidth(), getHeight());
+		return this;
+	}
 }

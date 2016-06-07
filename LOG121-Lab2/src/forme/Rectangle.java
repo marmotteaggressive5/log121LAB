@@ -55,4 +55,11 @@ public class Rectangle extends FormeLineaire {
 	public int getDistanceMax() {
 		return (int) Math.hypot(getHeight(), getWidth());
 	}
+
+	@Override
+	public Forme dessinerFormeOriginal(Graphics graph) {
+		graph.setColor(getColor());
+		graph.fillRect(getX1(), getY1(), getWidth(), getHeight());
+		return this;
+	}
 }

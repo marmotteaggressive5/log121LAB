@@ -57,4 +57,29 @@ public class Ligne extends FormeLineaire {
 	public int getDistanceMax() {
 		return (int) Math.hypot(getHeight(), getWidth());
 	}
+
+	@Override
+	public Forme dessinerFormeOriginal(Graphics graph) {
+		graph.setColor(getColor());
+		graph.drawLine(getX1(), getY1(), getX2(), getY2());
+		return this;
+	}
+	
+	public Rectangle2D getContourOriginal() {
+		int width = getX2() - getX1();
+		int height = getY2() - getY1();
+		int x1 = getX1();
+		int y1 = getY1();
+
+		if (width < 0) {
+			x1 = getX2();
+		}
+
+		if (height < 0) {
+			y1 = getY2();
+		}
+
+		return new Rectangle2D.Float(x1, y1, getWidth(), getHeight());
+	}
+
 }

@@ -105,6 +105,8 @@ public abstract class Forme {
 	 *            qui permet de dessiner les formes
 	 */
 	public abstract Forme dessinerForme(Graphics graph,int index);
+	
+	public abstract Forme dessinerFormeOriginal(Graphics graph);
 
 	/**
 	 * Dessine le contour de la forme en pointille
@@ -131,11 +133,35 @@ public abstract class Forme {
 
 		/* FIN DU CODE EMPRUNTE */
 	}
+	
+	public void dessinerContourOriginal(Graphics2D graph,int index) {
+		graph.setColor(Color.GRAY);
+
+		/*
+		 * CODE EMPRUNTE : Les lignes suivantes sont basees sur une fonction
+		 * provenant du site :
+		 * http://www.java2s.com/Code/Java/2D-Graphics-GUI/Dashedrectangle.htm
+		 * 
+		 * ce code permet de dessiner le contour de la forme en pointille
+		 */
+
+		Rectangle2D contour = getContourOriginal();
+		float[] dash = { 5, 5 };
+		Stroke dashedStroke = new BasicStroke(1, BasicStroke.CAP_BUTT,
+				BasicStroke.JOIN_MITER, 3, dash, 0);
+		graph.fill(dashedStroke.createStrokedShape(contour));
+
+		/* FIN DU CODE EMPRUNTE */
+	}
 
 	/**
 	 * Permet d'obtenir le contour de la forme
 	 */
 	public Rectangle2D getContour(int index) {
 		return new Rectangle2D.Float(DISTANCE_ENTRE_FORME*index, DISTANCE_ENTRE_FORME*index, getWidth(), getHeight());
+	}
+	
+	public Rectangle2D getContourOriginal() {
+		return new Rectangle2D.Float(getX1(), getY1(), getWidth(), getHeight());
 	}
 }

@@ -242,8 +242,7 @@ public class MenuFenetre extends JMenuBar {
 				result = new TriHauteurDecroissante();
 				break;
 			case 11:
-				//TODO
-				result = new TriHauteurDecroissante();
+				result = new OrdreOriginal();
 				break;
 		}
 		
