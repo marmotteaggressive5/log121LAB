@@ -70,7 +70,7 @@ public class FenetreFormes extends JComponent {
 			for (int i = 0; i < formeArrayList.size(); i++) {
 
 				if (formeArrayList.get(i) != null) {
-					if(triAlgo.getClass().getName() == "triAlgorithm.OrdreOriginal"){ //Methode broche a foin
+					if(triAlgo.getClass().getName() == "trialgorithm.OrdreOriginal"){ //Methode broche a foin
 						((AbstractForme)formeArrayList.get(i)).dessinerFormeOriginal(graph2D).dessinerContourOriginal(graph2D,i);
 					}else{
 						((AbstractForme)formeArrayList.get(i)).dessinerForme(graph2D,i).dessinerContour(graph2D,i);
