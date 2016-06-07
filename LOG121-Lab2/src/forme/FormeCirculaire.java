@@ -20,7 +20,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 
-public class FormeCirculaire extends Forme {
+public class FormeCirculaire extends AbstractForme {
 
 	private Point centre;
 	private int rayonH;
@@ -84,7 +84,7 @@ public class FormeCirculaire extends Forme {
 	
 
 	@Override
-	public Forme dessinerForme(Graphics graph,int index) {
+	public AbstractForme dessinerForme(Graphics graph,int index) {
 		graph.setColor(getColor());
 		graph.fillOval(DISTANCE_ENTRE_FORME*index, DISTANCE_ENTRE_FORME*index, getWidth(), getHeight());
 		return this;
@@ -127,7 +127,7 @@ public class FormeCirculaire extends Forme {
 	}
 
 	@Override
-	public Forme dessinerFormeOriginal(Graphics graph) {
+	public AbstractForme dessinerFormeOriginal(Graphics graph) {
 		graph.setColor(getColor());
 		graph.fillOval(getCentreX() - rayonH, getCentreY() - rayonV, getWidth(), getHeight());
 		return this;

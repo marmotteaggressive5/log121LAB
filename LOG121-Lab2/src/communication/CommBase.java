@@ -20,8 +20,7 @@ import java.net.Socket;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
-
-import StructureDeDonne.CustomLinkedList;
+import structurededonne.CustomLinkedList;
 import forme.CreateurFormes;
 
 /**

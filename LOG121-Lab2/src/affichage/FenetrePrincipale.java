@@ -18,8 +18,7 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.JFrame;
-
-import StructureDeDonne.CustomLinkedList;
+import structurededonne.CustomLinkedList;
 import communication.CommBase;
 import triAlgorithm.TriStrategy;
 

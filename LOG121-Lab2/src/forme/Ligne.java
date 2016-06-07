@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 
-public class Ligne extends FormeLineaire {
+public class Ligne extends AbstractFormeLineaire {
 
 	/**
 	 * Constructeur
@@ -23,7 +23,7 @@ public class Ligne extends FormeLineaire {
 	}
 
 	@Override
-	public Forme dessinerForme(Graphics graph,int index) {
+	public AbstractForme dessinerForme(Graphics graph,int index) {
 		graph.setColor(getColor());
 		int cornerPostion = DISTANCE_ENTRE_FORME*index;
 		graph.drawLine(cornerPostion, cornerPostion, cornerPostion+getWidth(), cornerPostion+getHeight());
@@ -59,7 +59,7 @@ public class Ligne extends FormeLineaire {
 	}
 
 	@Override
-	public Forme dessinerFormeOriginal(Graphics graph) {
+	public AbstractForme dessinerFormeOriginal(Graphics graph) {
 		graph.setColor(getColor());
 		graph.drawLine(getX1(), getY1(), getX2(), getY2());
 		return this;

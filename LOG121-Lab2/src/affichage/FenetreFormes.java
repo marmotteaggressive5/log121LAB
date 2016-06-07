@@ -16,9 +16,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
-
-import StructureDeDonne.CustomLinkedList;
-import forme.Forme;
+import structurededonne.CustomLinkedList;
+import forme.AbstractForme;
 import triAlgorithm.*;
 
 /**
@@ -72,9 +71,9 @@ public class FenetreFormes extends JComponent {
 
 				if (formeArrayList.get(i) != null) {
 					if(triAlgo.getClass().getName() == "triAlgorithm.OrdreOriginal"){ //Methode broche a foin
-						((Forme)formeArrayList.get(i)).dessinerFormeOriginal(graph2D).dessinerContourOriginal(graph2D,i);
+						((AbstractForme)formeArrayList.get(i)).dessinerFormeOriginal(graph2D).dessinerContourOriginal(graph2D,i);
 					}else{
-						((Forme)formeArrayList.get(i)).dessinerForme(graph2D,i).dessinerContour(graph2D,i);
+						((AbstractForme)formeArrayList.get(i)).dessinerForme(graph2D,i).dessinerContour(graph2D,i);
 					}
 				} else {
 					break;

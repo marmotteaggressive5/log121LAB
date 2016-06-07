@@ -1,6 +1,6 @@
 package triAlgorithm;
 
-import StructureDeDonne.CustomLinkedList;
+import structurededonne.CustomLinkedList;
 
 public interface TriStrategy {
 	public CustomLinkedList tri(CustomLinkedList arr);

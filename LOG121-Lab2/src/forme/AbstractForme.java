@@ -23,7 +23,7 @@ import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.geom.Rectangle2D;
 
-public abstract class Forme {
+public abstract class AbstractForme {
 
 	private int nSeq;
 	private String type;
@@ -40,7 +40,7 @@ public abstract class Forme {
 	 * @param aColor
 	 *            Color la couleur de la forme
 	 */
-	public Forme(final int aNSeq, final String aType, final Color aColor) {
+	public AbstractForme(final int aNSeq, final String aType, final Color aColor) {
 		this.nSeq = aNSeq;
 		this.type = aType;
 		this.color = aColor;
@@ -104,9 +104,9 @@ public abstract class Forme {
 	 * @param graph
 	 *            qui permet de dessiner les formes
 	 */
-	public abstract Forme dessinerForme(Graphics graph,int index);
+	public abstract AbstractForme dessinerForme(Graphics graph,int index);
 	
-	public abstract Forme dessinerFormeOriginal(Graphics graph);
+	public abstract AbstractForme dessinerFormeOriginal(Graphics graph);
 
 	/**
 	 * Dessine le contour de la forme en pointille

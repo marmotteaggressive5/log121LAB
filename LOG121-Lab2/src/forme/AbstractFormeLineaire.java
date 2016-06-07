@@ -19,7 +19,7 @@ package forme;
 import java.awt.Color;
 import java.awt.Point;
 
-public abstract class FormeLineaire extends Forme {
+public abstract class AbstractFormeLineaire extends AbstractForme {
 
 	private Point point1;
 	private Point point2;
@@ -35,7 +35,7 @@ public abstract class FormeLineaire extends Forme {
 	 * @param aY2 la deuxieme coordonnee y
 	 * @param aColor la couleur de la forme
 	 */
-	public FormeLineaire(final int aNSeq, final String aType, final int aX1,
+	public AbstractFormeLineaire(final int aNSeq, final String aType, final int aX1,
 			final int aY1, final int aX2, final int aY2, final Color aColor) {
 		super(aNSeq, aType, aColor);
 		point1 = new Point(aX1,aY1);

@@ -51,7 +51,7 @@ public class CreateurFormes {
 	 * @return une instance d'une des sous-classes de la classe abstraite Forme
 	 *         avec les parametres passes par la chaine d'entree.
 	 */
-	public Forme creerForme(final String chaineForme) {
+	public AbstractForme creerForme(final String chaineForme) {
 
 		int nSeq = separateur.extractNSeq(chaineForme);
 		String type = separateur.extractType(chaineForme);

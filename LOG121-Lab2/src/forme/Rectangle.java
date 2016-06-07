@@ -3,7 +3,7 @@ package forme;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Rectangle extends FormeLineaire {
+public class Rectangle extends AbstractFormeLineaire {
 
 	/**
 	 * Constructeur
@@ -40,7 +40,7 @@ public class Rectangle extends FormeLineaire {
 	}
 	
 	@Override
-	public Forme dessinerForme(Graphics graph,int index) {
+	public AbstractForme dessinerForme(Graphics graph,int index) {
 		graph.setColor(getColor());
 		graph.fillRect(DISTANCE_ENTRE_FORME*index, DISTANCE_ENTRE_FORME*index, getWidth(), getHeight());
 		return this;
@@ -57,7 +57,7 @@ public class Rectangle extends FormeLineaire {
 	}
 
 	@Override
-	public Forme dessinerFormeOriginal(Graphics graph) {
+	public AbstractForme dessinerFormeOriginal(Graphics graph) {
 		graph.setColor(getColor());
 		graph.fillRect(getX1(), getY1(), getWidth(), getHeight());
 		return this;
