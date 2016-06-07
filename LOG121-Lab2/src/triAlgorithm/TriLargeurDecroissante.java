@@ -1,6 +1,6 @@
 package triAlgorithm;
 
-import forme.CustomLinkedList;
+import StructureDeDonne.CustomLinkedList;
 import forme.Forme;
 
 public class TriLargeurDecroissante implements TriStrategy {

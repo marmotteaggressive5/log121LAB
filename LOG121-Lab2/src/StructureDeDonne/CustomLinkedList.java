@@ -1,4 +1,4 @@
-package forme;
+package StructureDeDonne;
 
 public class CustomLinkedList {
 	private Node first;

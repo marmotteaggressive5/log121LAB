@@ -3,7 +3,7 @@ package triAlgorithm;
 import java.util.Arrays;
 import java.util.List;
 
-import forme.CustomLinkedList;
+import StructureDeDonne.CustomLinkedList;
 import forme.Forme;
 
 public class TriFormeLigne implements TriStrategy {

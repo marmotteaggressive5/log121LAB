@@ -16,7 +16,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
-import forme.CustomLinkedList;
+
+import StructureDeDonne.CustomLinkedList;
 import forme.Forme;
 import triAlgorithm.*;
 
@@ -32,8 +33,9 @@ public class FenetreFormes extends JComponent {
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 500;
 	public static final Dimension dimension = new Dimension(500, 500);
-
-	private CustomLinkedList formeArrayList = null;
+	
+	private TriStrategy triAlgo = new TriAireCroissant();
+	private CustomLinkedList formeArrayList ;
 
 	/**
 	 * Constructeur
@@ -44,10 +46,17 @@ public class FenetreFormes extends JComponent {
 
 	public void setConteneur(final CustomLinkedList CustomLinkedList) {
 		this.formeArrayList = CustomLinkedList;
-		//System.out.println("ToString = " + CustomLinkedList.toString());
-		TriStrategy triAlgo = new TriHauteurDecroissante();
 		triAlgo.tri(this.formeArrayList);
 		this.repaint();
+	}
+	
+	public void setTriAlgo(TriStrategy trialgo){
+		this.triAlgo = trialgo;
+		
+		if(this.formeArrayList != null){
+			triAlgo.tri(this.formeArrayList);
+			this.repaint();
+		}
 	}
 
 	/*

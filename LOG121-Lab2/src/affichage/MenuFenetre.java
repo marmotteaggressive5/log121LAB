@@ -12,10 +12,11 @@ Historique des modifications
 2016-05-24 Derni�re Version
  *******************************************************/
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-
+import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -25,6 +26,7 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
 import communication.CommBase;
+import triAlgorithm.*;
 
 /**
  * Cree le menu de la fenetre de l'application
@@ -56,19 +58,19 @@ public class MenuFenetre extends JMenuBar {
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
 	
 	private JMenuItem obternirFormesMenuItem;
-
-
-	private CommBase comm; // Pour activer/désactiver la communication avec le
-							// serveur
+	private CommBase comm; // Pour activer/désactiver la communication avec le serveur
+	private ArrayList<JRadioButtonMenuItem> menuButtonArr = new ArrayList<JRadioButtonMenuItem>();
+	private FenetrePrincipale parentFenetre;
 
 	/**
 	 * Constructeur
 	 */
-	public MenuFenetre(CommBase comm) {
+	public MenuFenetre(CommBase comm,FenetrePrincipale parent) {
 		this.comm = comm;
 		addMenuFichier();
 		addMenuOrdre();
 		addMenuAide();
+		this.parentFenetre = parent;
 	}
 
 
@@ -106,7 +108,7 @@ public class MenuFenetre extends JMenuBar {
 				 MENU_ORDRE_HAUTEUR_DECROISSANTE,
 				 MENU_ORDRE_ORIGINAL
 		 });
-		 		
+		 
 		add(menu);
 		
 	}
@@ -159,15 +161,94 @@ public class MenuFenetre extends JMenuBar {
 	 *            éléments
 	 * @return le menu
 	 */
-	private static JMenu creerRadioMenu(String titleKey, String[] itemKeys) {
+	private JMenu creerRadioMenu(String titleKey, String[] itemKeys) {
 		JMenu menu = new JMenu(LangueConfig.getResource(titleKey));
 		ButtonGroup group = new ButtonGroup();
 		for (int i = 0; i < itemKeys.length; ++i) {
 			JRadioButtonMenuItem radioButton = new JRadioButtonMenuItem(LangueConfig.getResource(itemKeys[i]));
+			
+			radioButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					parentFenetre.orderChange();
+				}
+			});
+			
+			menuButtonArr.add(radioButton);
 			group.add(radioButton);
 			menu.add(radioButton);
 		}
+		
+		
+		
+		menuButtonArr.get(0).setSelected(true);
+		
 		return menu;
+	}
+	
+	public TriStrategy getOrdreSelected(){
+		TriStrategy result = null;
+		int RadioSelectedIndex = 0;
+		for(int i=0;i<this.menuButtonArr.size();i++){
+			if(menuButtonArr.get(i).isSelected()){
+				RadioSelectedIndex = i;
+			}
+		}
+
+		/*
+		 * 		 	MENU_ORDRE_NUMERO_SEQUENCE_CROISSANT,
+				 	MENU_ORDRE_NUMERO_SEQUENCE_DECROISSANT,
+				 	MENU_ORDRE_AIRE_CROISSANTE,
+				 	MENU_ORDRE_AIRE_DECROISSANTE,
+				 	MENU_ORDRE_TYPE_REGULIER,
+				 	MENU_ORDRE_TYPE_INVERSE,
+				 	MENU_ORDRE_DISTANCE_CROISSANTE,
+				 	MENU_ORDRE_LARGEUR_CROISSANTE,
+				 	MENU_ORDRE_LARGEUR_DECROISSANTE,
+				 	MENU_ORDRE_HAUTEUR_CROISSANTE,
+				 	MENU_ORDRE_HAUTEUR_DECROISSANTE,
+				 MENU_ORDRE_ORIGINAL
+		 */
+		switch (RadioSelectedIndex){
+			case 0:
+				result = new TriSeqCroissant();
+				break;
+			case 1:
+				result = new TriSeqDecroissant();
+				break;
+			case 2:
+				result = new TriAireCroissant();
+				break;
+			case 3:
+				result = new TriAireDecroissant();
+				break;
+			case 4:
+				result = new TriFormeCarre();
+				break;
+			case 5:
+				result = new TriFormeLigne();
+				break;
+			case 6:
+				result = new TriDistCroissant();
+				break;
+			case 7:
+				result = new TriLargeurCroissante();
+				break;
+			case 8:
+				result = new TriLargeurDecroissante();
+				break;
+			case 9:
+				result = new TriHauteurCroissante();
+				break;
+			case 10:
+				result = new TriHauteurDecroissante();
+				break;
+			case 11:
+				//TODO
+				result = new TriHauteurDecroissante();
+				break;
+		}
+		
+		return result;
 	}
 	
 	/**

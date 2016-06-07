@@ -18,8 +18,10 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.JFrame;
+
+import StructureDeDonne.CustomLinkedList;
 import communication.CommBase;
-import forme.CustomLinkedList;
+import triAlgorithm.TriStrategy;
 
 /**
  * Cette classe represente la fenêtre principale de l'application
@@ -39,7 +41,7 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener 
 	 */
 	public FenetrePrincipale(CommBase comm) {
 
-		menu = new MenuFenetre(comm);
+		menu = new MenuFenetre(comm,this);
 		this.setTitle("Forme-idable");
 		this.setLayout(new BorderLayout());
 		this.add(menu, BorderLayout.NORTH);
@@ -69,6 +71,11 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener 
 
 		/* FIN DU CODE EMPRUNTE */
 		
+	}
+	
+	public void orderChange(){
+		TriStrategy triAlgo = this.menu.getOrdreSelected();
+		this.fenetreFormes.setTriAlgo(triAlgo);
 	}
 
 	// Appele lorsque le sujet lance "firePropertyChanger"

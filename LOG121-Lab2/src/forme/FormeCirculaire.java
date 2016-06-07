@@ -114,5 +114,15 @@ public class FormeCirculaire extends Forme {
 	public int getAire() {
 		return (int) (Math.PI * getRayonH() * getRayonV());
 	}
-	
+
+	@Override
+	public int getDistanceMax() {
+		int result;
+		if(getWidth() > getHeight()){
+			result = getWidth();
+		}else{
+			result = getHeight();
+		}
+		return result;
+	}
 }

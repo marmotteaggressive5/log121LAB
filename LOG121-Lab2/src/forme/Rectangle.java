@@ -50,4 +50,9 @@ public class Rectangle extends FormeLineaire {
 	public int getAire() {
 		return getWidth()*getHeight();
 	}
+	
+	@Override
+	public int getDistanceMax() {
+		return (int) Math.hypot(getHeight(), getWidth());
+	}
 }

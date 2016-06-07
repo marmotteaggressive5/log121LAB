@@ -52,4 +52,9 @@ public class Ligne extends FormeLineaire {
 	public int getAire() {
 		return (int) Math.hypot(getHeight(), getWidth());
 	}
+	
+	@Override
+	public int getDistanceMax() {
+		return (int) Math.hypot(getHeight(), getWidth());
+	}
 }

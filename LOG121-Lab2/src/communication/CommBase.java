@@ -20,8 +20,9 @@ import java.net.Socket;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
+
+import StructureDeDonne.CustomLinkedList;
 import forme.CreateurFormes;
-import forme.CustomLinkedList;
 
 /**
  * Base d'une communication via un fil d'exécution parallele.

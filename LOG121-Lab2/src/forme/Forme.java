@@ -55,6 +55,8 @@ public abstract class Forme {
 	public int getNSeq() {
 		return nSeq;
 	}
+	
+	public abstract int getDistanceMax();
 
 	/**
 	 * 
