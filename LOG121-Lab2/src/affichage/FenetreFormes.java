@@ -34,7 +34,7 @@ public class FenetreFormes extends JComponent {
 	public static final int HEIGHT = 500;
 	public static final Dimension dimension = new Dimension(500, 500);
 	
-	private TriStrategy triAlgo = new TriAireCroissant();
+	private TriStrategy triAlgo = null;
 	private CustomLinkedList formeArrayList ;
 
 	/**

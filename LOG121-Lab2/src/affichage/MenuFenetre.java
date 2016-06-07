@@ -181,7 +181,6 @@ public class MenuFenetre extends JMenuBar {
 		
 		
 		menuButtonArr.get(0).setSelected(true);
-		
 		return menu;
 	}
 	

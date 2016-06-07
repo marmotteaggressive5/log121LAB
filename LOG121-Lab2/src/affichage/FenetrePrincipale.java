@@ -70,7 +70,7 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener 
 		});
 
 		/* FIN DU CODE EMPRUNTE */
-		
+		orderChange();
 	}
 	
 	public void orderChange(){
