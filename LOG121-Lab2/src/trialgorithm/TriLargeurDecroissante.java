@@ -1,4 +1,4 @@
-package triAlgorithm;
+package trialgorithm;
 
 import structurededonne.CustomLinkedList;
 import forme.AbstractForme;

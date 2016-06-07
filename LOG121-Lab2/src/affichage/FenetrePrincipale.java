@@ -19,8 +19,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.JFrame;
 import structurededonne.CustomLinkedList;
+import trialgorithm.TriStrategy;
 import communication.CommBase;
-import triAlgorithm.TriStrategy;
 
 /**
  * Cette classe represente la fenêtre principale de l'application

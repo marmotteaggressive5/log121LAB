@@ -17,8 +17,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
 import structurededonne.CustomLinkedList;
+import trialgorithm.*;
 import forme.AbstractForme;
-import triAlgorithm.*;
 
 /**
  * Cette fenetre gere l'affichage des formes

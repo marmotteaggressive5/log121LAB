@@ -26,7 +26,7 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
 import communication.CommBase;
-import triAlgorithm.*;
+import trialgorithm.*;
 
 /**
  * Cree le menu de la fenetre de l'application
