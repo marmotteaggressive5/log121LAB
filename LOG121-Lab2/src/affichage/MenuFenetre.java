@@ -76,23 +76,6 @@ public class MenuFenetre extends JMenuBar {
 
 	public void addMenuOrdre() {
 		
-//		par numéro de séquence croissant
-//		par numéro de séquence décroissant
-		
-//		par aire de forme croissante
-//		par aire de forme décroissante
-		
-//		par type de forme dans l'ordre suivant 
-//		par type de forme dans l'ordre inverse 
-		
-//		par distance (croissante) 
-		
-//		par largeur croissante
-//		par largeur décroissante
-//		par hauteur croissante
-//		par hauteur décroissante
-//		selon l'ordre original
-		
 		 JMenu menu = creerRadioMenu(MENU_ORDRE_TITRE,
 					new String[] { 
 				 MENU_ORDRE_ORIGINAL,
@@ -184,12 +167,18 @@ public class MenuFenetre extends JMenuBar {
 		return menu;
 	}
 	
+	/**
+	 * Obtient l'ordre presentement selectionne
+	 * 
+	 * @return le type de tri 
+	 */
 	public TriStrategy getOrdreSelected(){
 		TriStrategy result = null;
 		int RadioSelectedIndex = 0;
 		for(int i=0;i<this.menuButtonArr.size();i++){
 			if(menuButtonArr.get(i).isSelected()){
 				RadioSelectedIndex = i;
+				break;
 			}
 		}
 

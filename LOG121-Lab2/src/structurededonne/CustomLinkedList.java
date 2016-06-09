@@ -24,20 +24,32 @@ public class CustomLinkedList {
 	private Node last;
 	private int nbElement;
 
+	/**
+	 * Constructeur
+	 */
 	public CustomLinkedList() {
 	}
 
+	/**
+	 * Retourne le nombre d'elements dans la liste
+	 * 
+	 * @return la taille de la liste
+	 */
 	public int size() {
 		return nbElement;
 	}
 
 	public void addAll(final CustomLinkedList customLinkedList) {
-
 		for (int i = 0; i < customLinkedList.size(); i++) {
 			this.add(customLinkedList.get(i));
 		}
 	}
 
+	/**
+	 * Ajoute un objet dans la liste
+	 * 
+	 * @param ele un objet a ajouter 
+	 */
 	public void add(Object ele) {
 		Node newNode = new Node(ele);
 		if (nbElement == 0) {
@@ -50,6 +62,12 @@ public class CustomLinkedList {
 		nbElement++;
 	}
 
+	/**
+	 * Obtient l'objet de la liste a l'index desire
+	 * 
+	 * @param index l'index de l'objet
+	 * @return un Object desirer
+	 */
 	public Object get(int index) {
 		Node result = first;
 		for (int i = 0; i <= index - 1; i++) {
@@ -59,6 +77,12 @@ public class CustomLinkedList {
 		return result.element;
 	}
 
+	/**
+	 * Retourne le noeud 
+	 * 
+	 * @param index l'index du noeud
+	 * @return le noeud
+	 */
 	private Node getNode(int index) {
 		Node result = first;
 		for (int i = 0; i <= index - 1; i++) {
@@ -68,6 +92,10 @@ public class CustomLinkedList {
 		return result;
 	}
 
+	/**
+	 * Retourne une string contenant les informations
+	 * sur les objets dans la liste
+	 */
 	public String toString() {
 		String result = "";
 		Node current = first;
@@ -78,17 +106,27 @@ public class CustomLinkedList {
 		return result;
 	}
 
+	/**
+	 * Echange l'objet avec l'objet suivant 
+	 * dans la liste
+	 * 
+	 * @param index l'index de l'objet a echanger
+	 */
 	public void swapWithNext(int index) {
 		Object temp = get(index);
 		getNode(index).element = get(index + 1);
 		getNode(index + 1).element = temp;
 	}
 
+	/**
+	 * Vide la liste chainee
+	 */
 	public void clear() {
 		first = null;
 		last = null;
 		nbElement = 0;
 	}
+
 
 	private class Node {
 		private Node next = null;

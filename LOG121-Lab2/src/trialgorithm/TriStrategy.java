@@ -21,5 +21,12 @@ package trialgorithm;
 import structurededonne.CustomLinkedList;
 
 public interface TriStrategy {
+	
+	/**
+	 * Tri une liste selon une strategie desiree
+	 * 
+	 * @param arr la liste a triee
+	 * @return la liste triee
+	 */
 	public CustomLinkedList tri(CustomLinkedList arr);
 }

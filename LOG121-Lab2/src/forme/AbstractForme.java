@@ -103,13 +103,20 @@ public abstract class AbstractForme {
 	public abstract int getY1();
 
 	/**
+	 * Affiche la forme actuelle 
+	 * @param graph qui dessine la forme
+	 * @param index l'index de la forme
+	 * @return la forme
+	 */
+	public abstract AbstractForme dessinerForme(Graphics graph,int index);
+	
+	/**
 	 * Affiche la forme actuelle
 	 * 
 	 * @param graph
 	 *            qui permet de dessiner les formes
+	 * @return la forme
 	 */
-	public abstract AbstractForme dessinerForme(Graphics graph,int index);
-	
 	public abstract AbstractForme dessinerFormeOriginal(Graphics graph);
 
 	/**
@@ -138,6 +145,11 @@ public abstract class AbstractForme {
 		/* FIN DU CODE EMPRUNTE */
 	}
 	
+	/**
+	 * 
+	 * @param graph
+	 * @param index
+	 */
 	public void dessinerContourOriginal(Graphics2D graph,int index) {
 		graph.setColor(Color.GRAY);
 
