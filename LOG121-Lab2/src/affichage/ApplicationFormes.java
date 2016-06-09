@@ -1,11 +1,8 @@
-package affichage;
-
-import communication.CommBase;
 /******************************************************
 Cours:  LOG121
 Projet: Squelette du laboratoire #1
 Nom du fichier: ApplicationFormes.java
-Date créé: 2013-05-03
+Date cree: 2013-05-03
  *******************************************************
 Historique des modifications
  *******************************************************
@@ -13,6 +10,9 @@ Historique des modifications
 2013-05-03 Version initiale
 2016-05-21 Derniere Modification
  *******************************************************/
+package affichage;
+
+import communication.CommBase;
 
 /**
  * Cette classe represente l'application dans son ensemble.

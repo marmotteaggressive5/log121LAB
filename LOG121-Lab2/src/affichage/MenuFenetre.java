@@ -95,6 +95,7 @@ public class MenuFenetre extends JMenuBar {
 		
 		 JMenu menu = creerRadioMenu(MENU_ORDRE_TITRE,
 					new String[] { 
+				 MENU_ORDRE_ORIGINAL,
 				 MENU_ORDRE_NUMERO_SEQUENCE_CROISSANT,
 				 MENU_ORDRE_NUMERO_SEQUENCE_DECROISSANT,
 				 MENU_ORDRE_AIRE_CROISSANTE,
@@ -105,8 +106,7 @@ public class MenuFenetre extends JMenuBar {
 				 MENU_ORDRE_LARGEUR_CROISSANTE,
 				 MENU_ORDRE_LARGEUR_DECROISSANTE,
 				 MENU_ORDRE_HAUTEUR_CROISSANTE,
-				 MENU_ORDRE_HAUTEUR_DECROISSANTE,
-				 MENU_ORDRE_ORIGINAL
+				 MENU_ORDRE_HAUTEUR_DECROISSANTE
 		 });
 		 
 		add(menu);
@@ -193,56 +193,42 @@ public class MenuFenetre extends JMenuBar {
 			}
 		}
 
-		/*
-		 * 		 	MENU_ORDRE_NUMERO_SEQUENCE_CROISSANT,
-				 	MENU_ORDRE_NUMERO_SEQUENCE_DECROISSANT,
-				 	MENU_ORDRE_AIRE_CROISSANTE,
-				 	MENU_ORDRE_AIRE_DECROISSANTE,
-				 	MENU_ORDRE_TYPE_REGULIER,
-				 	MENU_ORDRE_TYPE_INVERSE,
-				 	MENU_ORDRE_DISTANCE_CROISSANTE,
-				 	MENU_ORDRE_LARGEUR_CROISSANTE,
-				 	MENU_ORDRE_LARGEUR_DECROISSANTE,
-				 	MENU_ORDRE_HAUTEUR_CROISSANTE,
-				 	MENU_ORDRE_HAUTEUR_DECROISSANTE,
-				 MENU_ORDRE_ORIGINAL
-		 */
 		switch (RadioSelectedIndex){
 			case 0:
-				result = new TriSeqCroissant();
+				result = new OrdreOriginal();
 				break;
 			case 1:
-				result = new TriSeqDecroissant();
+				result = new TriSeqCroissant();
 				break;
 			case 2:
-				result = new TriAireCroissant();
+				result = new TriSeqDecroissant();
 				break;
 			case 3:
-				result = new TriAireDecroissant();
+				result = new TriAireCroissant();
 				break;
 			case 4:
-				result = new TriFormeCarre();
+				result = new TriAireDecroissant();
 				break;
 			case 5:
-				result = new TriFormeLigne();
+				result = new TriFormeCarre();
 				break;
 			case 6:
-				result = new TriDistCroissant();
+				result = new TriFormeLigne();
 				break;
 			case 7:
-				result = new TriLargeurCroissante();
+				result = new TriDistCroissant();
 				break;
 			case 8:
-				result = new TriLargeurDecroissante();
+				result = new TriLargeurCroissante();
 				break;
 			case 9:
-				result = new TriHauteurCroissante();
+				result = new TriLargeurDecroissante();
 				break;
 			case 10:
-				result = new TriHauteurDecroissante();
+				result = new TriHauteurCroissante();
 				break;
 			case 11:
-				result = new OrdreOriginal();
+				result = new TriHauteurDecroissante();
 				break;
 		}
 		

@@ -3,10 +3,13 @@ Cours:   LOG121
 Session: E2016
 Groupe:  02
 Projet: Laboratoire #1
-�tudiant(e)s: Philippe Torres-Brisebois
-Professeur : Fran�is Cardinal
-Nom du fichier: Forme.java
-Date cr��: 2016-05-14
+Etudiant(e)s: Philippe Torres-Brisebois
+			  Nelson Chao
+			  Samuel Crotteau
+			  Laurent Theroux-Bombardier
+Professeur : Francis Cardinal
+Nom du fichier: FormeCirculaire.java
+Date cree 2016-05-14
 Date dern. modif. 2016-05-14
  *******************************************************
 Historique des modifications

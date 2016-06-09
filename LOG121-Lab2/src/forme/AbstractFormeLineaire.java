@@ -3,15 +3,19 @@ Cours:   LOG121
 Session: E2016
 Groupe:  02
 Projet: Laboratoire #1
-�tudiant(e)s: Philippe Torres-Brisebois
-Professeur : Fran�is Cardinal
-Nom du fichier: Forme.java
-Date cr��: 2016-05-14
-Date dern. modif. 2016-05-14
+Etudiant(e)s: Philippe Torres-Brisebois
+			  Nelson Chao
+			  Samuel Crotteau
+			  Laurent Theroux-Bombardier
+Professeur : Francis Cardinal
+Nom du fichier: AbstractFormeLineaire.java
+Date cree: 2016-05-14
+Date dern. modif. 2016-06-01
  *******************************************************
 Historique des modifications
  *******************************************************
 2016-05-14 Version initiale
+2016-06-01 Derniere modification
  *******************************************************/
 
 package forme;
@@ -59,6 +63,9 @@ public abstract class AbstractFormeLineaire extends AbstractForme {
 		return (int) point2.getY();
 	}
 	
-	
+	@Override
+	public int getDistanceMax() {
+		return (int) Math.hypot(getHeight(), getWidth());
+	}
 	
 }

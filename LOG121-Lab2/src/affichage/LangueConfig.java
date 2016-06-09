@@ -1,4 +1,3 @@
-package affichage;
 /******************************************************
 Cours:  LOG121
 Projet: Squelette du laboratoire #1
@@ -11,6 +10,7 @@ Historique des modifications
  *******************************************************
 2013-05-03 Version initiale
  *******************************************************/
+package affichage;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

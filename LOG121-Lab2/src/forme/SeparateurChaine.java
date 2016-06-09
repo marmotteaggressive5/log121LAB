@@ -5,8 +5,8 @@ Groupe:  02
 Projet: Laboratoire #1
 Étudiant(e)s: Philippe Torres-Brisebois
 Professeur : Françis Cardinal
-Nom du fichier: Forme.java
-Date créé: 2016-05-14
+Nom du fichier: SeparateurChaine.java
+Date cree: 2016-05-14
 Date dern. modif. 2016-05-14
  *******************************************************
 Historique des modifications

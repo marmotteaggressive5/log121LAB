@@ -9,7 +9,8 @@ Historique des modifications
  *******************************************************
  *@author Patrice Boucher
 2013-05-03 Version initiale
-2016-05-24 Derni�re Modification
+2016-05-24 Mise a jour de l'affichage
+2016-06-03 Derniere Modification
  *******************************************************/
 
 import java.awt.BorderLayout;

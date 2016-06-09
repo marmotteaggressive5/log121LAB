@@ -1,4 +1,3 @@
-package affichage;
 /******************************************************
 Cours:  LOG121
 Projet: Squelette du laboratoire #1
@@ -9,8 +8,9 @@ Historique des modifications
  *******************************************************
  *@author Patrice Boucher
 2013-05-03 Version initiale
-2016-05-21 Derni�re Version
+2016-05-21 Derniere Version
  *******************************************************/
+package affichage;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -34,7 +34,8 @@ public class FenetreFormes extends JComponent {
 	public static final Dimension dimension = new Dimension(500, 500);
 	
 	private TriStrategy triAlgo = null;
-	private CustomLinkedList formeArrayList ;
+	private CustomLinkedList formeArrayList;
+	private CustomLinkedList originalArrayList = new CustomLinkedList();
 
 	/**
 	 * Constructeur
@@ -42,10 +43,14 @@ public class FenetreFormes extends JComponent {
 	public FenetreFormes() {
 
 	}
-
-	public void setConteneur(final CustomLinkedList CustomLinkedList) {
-		this.formeArrayList = CustomLinkedList;
+	
+	public void setConteneur(final CustomLinkedList customLinkedList) {
+		this.formeArrayList = customLinkedList;
+		this.originalArrayList.clear();
+		this.originalArrayList.addAll(customLinkedList);
+		
 		triAlgo.tri(this.formeArrayList);
+		
 		this.repaint();
 	}
 	
@@ -70,8 +75,8 @@ public class FenetreFormes extends JComponent {
 			for (int i = 0; i < formeArrayList.size(); i++) {
 
 				if (formeArrayList.get(i) != null) {
-					if(triAlgo.getClass().getName() == "trialgorithm.OrdreOriginal"){ //Methode broche a foin
-						((AbstractForme)formeArrayList.get(i)).dessinerFormeOriginal(graph2D).dessinerContourOriginal(graph2D,i);
+					if(triAlgo.getClass().getName() == "trialgorithm.OrdreOriginal"){ 
+						((AbstractForme)originalArrayList.get(i)).dessinerFormeOriginal(graph2D).dessinerContourOriginal(graph2D,i);
 					}else{
 						((AbstractForme)formeArrayList.get(i)).dessinerForme(graph2D,i).dessinerContour(graph2D,i);
 					}

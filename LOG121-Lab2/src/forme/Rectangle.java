@@ -1,3 +1,22 @@
+/******************************************************
+Cours:   LOG121
+Session: E2016
+Groupe:  02
+Projet: Laboratoire #2
+Étudiant(e)s: Philippe Torres-Brisebois
+			  Nelson Chao
+			  Samuel Crotteau
+			  Laurent Theroux-Bombardier
+Professeur : Françis Cardinal
+Nom du fichier: Rectangle.java
+Date cree: 2016-05-14
+Date dern. modif. 2016-06-04
+ *******************************************************
+Historique des modifications
+ *******************************************************
+2016-06-03 Version initiale
+2016-06-04 Derniere modification
+ *******************************************************/
 package forme;
 
 import java.awt.Color;
@@ -49,11 +68,6 @@ public class Rectangle extends AbstractFormeLineaire {
 	@Override
 	public int getAire() {
 		return getWidth()*getHeight();
-	}
-	
-	@Override
-	public int getDistanceMax() {
-		return (int) Math.hypot(getHeight(), getWidth());
 	}
 
 	@Override
