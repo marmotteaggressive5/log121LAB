@@ -8,7 +8,7 @@ Projet: Laboratoire #2
 			  Samuel Crotteau
 			  Laurent Theroux-Bombardier
 Professeur : Françis Cardinal
-Nom du fichier: TriFormeCarre.java
+Nom du fichier: TriFormeType.java
 Date créé: 2016-06-03
 Date dern. modif. 2016-06-03
  *******************************************************
@@ -23,7 +23,7 @@ import java.util.List;
 import structurededonne.CustomLinkedList;
 import forme.AbstractForme;
 
-public class TriFormeCarre implements TriStrategy {
+public class TriFormeType implements TriStrategy {
 
 	private List<String> formeOrder = Arrays.asList("CARRE", "RECTANGLE", "CERCLE", "OVALE", "LIGNE");
 	

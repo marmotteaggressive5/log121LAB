@@ -210,10 +210,10 @@ public class MenuFenetre extends JMenuBar {
 				result = new TriAireDecroissant();
 				break;
 			case 5:
-				result = new TriFormeCarre();
+				result = new TriFormeType();
 				break;
 			case 6:
-				result = new TriFormeLigne();
+				result = new TriFormeTypeInverse();
 				break;
 			case 7:
 				result = new TriDistCroissant();

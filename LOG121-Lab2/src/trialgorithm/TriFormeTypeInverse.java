@@ -8,7 +8,7 @@ Projet: Laboratoire #2
 			  Samuel Crotteau
 			  Laurent Theroux-Bombardier
 Professeur : Françis Cardinal
-Nom du fichier: TriFormeLigne.java
+Nom du fichier: TriFormeTypeInverse.java
 Date créé: 2016-06-03
 Date dern. modif. 2016-06-03
  *******************************************************
@@ -23,7 +23,7 @@ import java.util.List;
 import structurededonne.CustomLinkedList;
 import forme.AbstractForme;
 
-public class TriFormeLigne implements TriStrategy {
+public class TriFormeTypeInverse implements TriStrategy {
 
 	private List<String> formeOrder = Arrays.asList("CARRE", "RECTANGLE", "CERCLE", "OVALE", "LIGNE");
 	
